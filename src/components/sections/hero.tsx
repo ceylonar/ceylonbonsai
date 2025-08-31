@@ -14,7 +14,14 @@ export default function HeroSection() {
         data-ai-hint="bonsai trees"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-      <div className="relative z-10 p-4 max-w-4xl mx-auto">
+      <div className="relative z-10 p-4 max-w-4xl mx-auto flex flex-col items-center">
+        <Image
+          src="https://i.postimg.cc/6388jPpW/ed153779-6d-6d-4cde-9f44-20fda73f8319-removalai-preview.png"
+          alt="Ceylon Bonsai Museum Logo"
+          width={120}
+          height={120}
+          className="mb-6"
+        />
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold drop-shadow-lg leading-tight">
           Ceylon Bonsai Museum
         </h1>
