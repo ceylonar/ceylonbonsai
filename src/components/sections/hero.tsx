@@ -9,7 +9,7 @@ export default function HeroSection() {
         src="https://i.postimg.cc/ydw0FRz8/Generated-Image-September-01-2025-2-46-AM.jpg"
         alt="A collection of beautiful bonsai trees"
         fill
-        className="object-cover blur-sm opacity-70"
+        className="object-cover"
         priority
         data-ai-hint="bonsai trees"
       />
