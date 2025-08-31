@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
-import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import { useMounted } from '@/hooks/use-mounted';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
   { href: '/museum', label: 'Museum' },
@@ -20,10 +21,9 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
