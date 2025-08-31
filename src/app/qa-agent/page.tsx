@@ -45,6 +45,10 @@ export default function QAAgentPage() {
       });
     }
   }, [messages]);
+  
+  useEffect(() => {
+    document.title = "AI Bonsai Assistant | Ceylon Bonsai Museum";
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

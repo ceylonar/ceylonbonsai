@@ -3,6 +3,17 @@ import Footer from '@/components/layout/footer';
 import { Mail, Phone, MapPin, Building, UserCircle, Briefcase } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Contact Us',
+    description: 'Get in touch with the Ceylon Bonsai Museum. Find our email, phone number, address, and social media links. We look forward to hearing from you.',
+    openGraph: {
+        title: 'Contact Us | Ceylon Bonsai Museum',
+        description: 'Get in touch with the Ceylon Bonsai Museum.',
+    },
+};
+
 
 const contactDetails = [
   { icon: Mail, label: 'Email', value: 'ceylonbonsaimuseum@gmail.com', href: 'mailto:ceylonbonsaimuseum@gmail.com' },
