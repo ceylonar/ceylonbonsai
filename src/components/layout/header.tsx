@@ -89,9 +89,9 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'relative transition-colors duration-300 hover:text-primary',
+                    'relative transition-colors duration-300 hover:text-primary drop-shadow-sm',
                     pathname === link.href ? 'text-primary' : 'text-foreground/80',
-                     scrolled && (pathname === link.href ? 'text-white' : 'text-white/80')
+                     scrolled && (pathname === link.href ? 'text-primary' : 'text-white/80')
                   )}
                 >
                   {link.label}
