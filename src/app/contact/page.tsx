@@ -2,6 +2,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Mail, Phone, MapPin, Building, UserCircle, Briefcase } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 
 const contactDetails = [
   { icon: Mail, label: 'Email', value: 'ceylonbonsaimuseum@gmail.com', href: 'mailto:ceylonbonsaimuseum@gmail.com' },
@@ -13,6 +14,25 @@ const businessDetails = [
   { icon: Building, label: 'Registration Number', value: 'PV00326465' },
   { icon: UserCircle, label: 'Chairman', value: 'Duleepa Madhusanka Widyarathna' },
   { icon: Briefcase, label: 'Director', value: 'Dilan Lakshitha' },
+]
+
+const FacebookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-primary mr-4 mt-1">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary mr-4 mt-1">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const socialLinks = [
+  { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/ceylonbonsaimuseum' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ceylonbonsaimuseum' },
 ]
 
 export default function ContactPage() {
@@ -66,6 +86,21 @@ export default function ContactPage() {
                 ))}
               </CardContent>
             </Card>
+          </div>
+          <div className="max-w-6xl mx-auto mt-12">
+            <Card className="shadow-lg border-t-4 border-primary">
+                <CardHeader>
+                  <CardTitle className="font-headline text-3xl text-primary text-center">Follow Us</CardTitle>
+                </CardHeader>
+                <CardContent className="flex justify-center space-x-8">
+                  {socialLinks.map((social) => (
+                    <Link key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <social.icon />
+                      <span className="sr-only">{social.label}</span>
+                    </Link>
+                  ))}
+                </CardContent>
+              </Card>
           </div>
         </div>
       </main>
