@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { cn } from '@/lib/utils';
+import { useMounted } from '@/hooks/use-mounted';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -31,6 +32,7 @@ export default function QAAgentPage() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const mounted = useMounted();
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -76,6 +78,10 @@ export default function QAAgentPage() {
       </AvatarFallback>
     </Avatar>
   );
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-secondary/50">

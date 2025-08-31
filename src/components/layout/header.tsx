@@ -27,16 +27,19 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (mounted) {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [mounted]);
 
+  // Render a placeholder on the server and during initial client render
   if (!mounted) {
     return (
-       <header
+      <header
         className={cn(
           'sticky top-0 z-50 w-full',
-           'bg-transparent'
+          'bg-transparent'
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,11 +47,11 @@ export default function Header() {
             <Link href="/" className="text-xl font-bold font-headline text-primary whitespace-nowrap">
               Ceylon Bonsai Museum
             </Link>
-             <div className="flex items-center gap-4">
-                <div className="h-8 w-8 bg-muted/50 rounded-full animate-pulse" />
-                <div className="md:hidden">
-                   <div className="h-10 w-10" />
-                </div>
+            <div className="flex items-center gap-4">
+              <div className="h-8 w-8 bg-muted/50 rounded-full" />
+              <div className="md:hidden">
+                 <div className="h-10 w-10" />
+              </div>
             </div>
           </div>
         </div>
