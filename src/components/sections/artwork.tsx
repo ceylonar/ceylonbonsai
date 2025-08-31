@@ -47,15 +47,15 @@ export default function ArtworkSection() {
             Explore artistic interpretations of bonsai, where nature meets creative expression.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:grid-cols-4 gap-4 space-y-4">
           {artworkCollection.map((artwork) => (
-            <div key={artwork.title} className="group relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+            <div key={artwork.title} className="group relative overflow-hidden break-inside-avoid">
               <Image
                 src={artwork.image}
                 alt={artwork.title}
                 width={artwork.width}
                 height={artwork.height}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-auto"
                 data-ai-hint={artwork.aiHint}
               />
               <div className="absolute inset-0 bg-black/70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
