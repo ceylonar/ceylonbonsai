@@ -4,9 +4,9 @@ const bonsaiCollection = [
   {
     title: 'Legacy in Miniature',
     description: 'Explore ancient trees that tell stories of generations, each a living testament to history.',
-    image: 'https://picsum.photos/800/600',
-    width: 800,
-    height: 600,
+    image: 'https://images.unsplash.com/photo-1641412722397-3be359096577?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib25zYWklMjB0cmVlfGVufDB8fHx8MTc1NjY3MzU1Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+    width: 1080,
+    height: 720,
     aiHint: 'old bonsai'
   },
   {
