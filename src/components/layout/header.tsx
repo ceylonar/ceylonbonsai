@@ -35,21 +35,19 @@ export default function Header() {
     return (
        <header
         className={cn(
-          'sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300',
+          'sticky top-0 z-50 w-full',
            'bg-transparent'
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-2">
+          <div className="flex justify-between items-center py-2 h-[52px]">
             <Link href="/" className="text-xl font-bold font-headline text-primary whitespace-nowrap">
               Ceylon Bonsai Museum
             </Link>
              <div className="flex items-center gap-4">
                 <div className="h-8 w-8 bg-muted/50 rounded-full animate-pulse" />
                 <div className="md:hidden">
-                   <Button variant="ghost" size="icon" disabled>
-                    <Menu className="h-6 w-6" />
-                  </Button>
+                   <div className="h-10 w-10" />
                 </div>
             </div>
           </div>
