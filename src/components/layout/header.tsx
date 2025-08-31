@@ -20,8 +20,10 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -43,7 +45,7 @@ export default function Header() {
           </Link>
           <div className="flex items-center gap-4">
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-              {navLinks.map((link) => (
+              {mounted && navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -73,7 +75,7 @@ export default function Header() {
                     <Link href="/" className="text-xl font-bold font-headline text-primary mb-4">
                       Ceylon Bonsai Museum
                     </Link>
-                    {navLinks.map((link) => (
+                    {mounted && navLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
