@@ -96,7 +96,7 @@ export default function ProductsSection() {
             Everything you need to cultivate your passion for the art of bonsai.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <Card key={product.name} className="group overflow-hidden flex flex-col">
               <CardContent className="p-0">
