@@ -8,7 +8,7 @@ export default function QAAgentSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           <Bot className="mx-auto h-12 w-12 text-accent" />
-          <h2 className="mt-4 text-4xl md:text-5xl font-headline" style={{color: 'hsl(var(--primary))'}}>
+          <h2 className="mt-4 text-4xl md:text-5xl font-headline text-primary">
             Bonsai Q&A Agent
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">

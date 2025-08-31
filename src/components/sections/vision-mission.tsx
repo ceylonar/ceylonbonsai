@@ -6,7 +6,7 @@ export default function VisionMissionSection() {
     <section id="vision-mission" className="py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-headline" style={{color: 'hsl(var(--primary))'}}>
+          <h2 className="text-4xl md:text-5xl font-headline text-primary">
             Our Vision & Mission
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -14,7 +14,7 @@ export default function VisionMissionSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="shadow-lg border-t-4 border-primary">
+          <Card className="shadow-lg border-t-4 border-primary bg-card">
             <CardHeader className="items-center text-center">
               <div className="p-4 bg-accent/20 rounded-full">
                 <Eye className="h-8 w-8 text-primary" />
@@ -27,7 +27,7 @@ export default function VisionMissionSection() {
               </p>
             </CardContent>
           </Card>
-          <Card className="shadow-lg border-t-4 border-primary">
+          <Card className="shadow-lg border-t-4 border-primary bg-card">
             <CardHeader className="items-center text-center">
               <div className="p-4 bg-accent/20 rounded-full">
                 <Goal className="h-8 w-8 text-primary" />

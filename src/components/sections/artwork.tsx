@@ -42,7 +42,7 @@ export default function ArtworkSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <Paintbrush className="mx-auto h-12 w-12 text-accent" />
-          <h2 className="mt-4 text-4xl md:text-5xl font-headline" style={{color: 'hsl(var(--primary))'}}>The Art of Bonsai</h2>
+          <h2 className="mt-4 text-4xl md:text-5xl font-headline text-primary">The Art of Bonsai</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Explore artistic interpretations of bonsai, where nature meets creative expression.
           </p>
