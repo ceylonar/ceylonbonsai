@@ -13,6 +13,7 @@ export default function HeroSection() {
         priority
         data-ai-hint="bonsai trees"
       />
+      <div className="absolute inset-0 bg-black/50" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
       <div className="relative z-10 p-4 max-w-4xl mx-auto flex flex-col items-center">
         <Image
