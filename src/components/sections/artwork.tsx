@@ -29,7 +29,7 @@ const artworkCollection = [
   {
     title: 'Ethereal Weave',
     description: 'A delicate digital weaving of light and color, capturing the essence of a bonsai\'s spirit.',
-    image: 'https://picsum.photos/1024/1024',
+    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
     width: 1024,
     height: 1024,
     aiHint: 'digital bonsai art'
