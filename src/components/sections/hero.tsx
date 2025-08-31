@@ -18,8 +18,8 @@ export default function HeroSection() {
         <Image
           src="https://i.postimg.cc/6388jPpW/ed153779-6d-6d-4cde-9f44-20fda73f8319-removalai-preview.png"
           alt="Ceylon Bonsai Museum Logo"
-          width={120}
-          height={120}
+          width={360}
+          height={360}
           className="mb-6"
         />
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold drop-shadow-lg leading-tight">
