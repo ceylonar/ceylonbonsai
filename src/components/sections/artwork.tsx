@@ -13,7 +13,7 @@ const artworkCollection = [
   {
     title: 'Digital Zen',
     description: 'Modern digital art interpreting the bonsai form with vibrant colors and abstract shapes.',
-    image: 'https://images.unsplash.com/photo-1754373383717-2ceec19e28f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMGJvbnNhaSUyMGFydHxlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://images.unsplash.com/photo-1611387729672-25583e070328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGJvbnNhaSUyMGFydHxlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
     width: 1080,
     height: 1080,
     aiHint: 'abstract bonsai art'
@@ -21,7 +21,7 @@ const artworkCollection = [
   {
     title: 'Sculpted from Light',
     description: 'A photographic artwork playing with light and shadow to highlight the bonsai\'s form.',
-    image: 'https://picsum.photos/seed/bonsai-tree/1080/1350',
+    image: 'https://images.unsplash.com/photo-1632161286719-5afe9b5d954b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxib25zYWklMjB0cmVlfGVufDB8fHx8MTc1NjY3MzQ0N3ww&ixlib=rb-4.1.0&q=80&w=1080',
     width: 1080,
     height: 1350,
     aiHint: 'bonsai tree'
@@ -29,7 +29,7 @@ const artworkCollection = [
   {
     title: 'Ethereal Weave',
     description: 'A delicate digital weaving of light and color, capturing the essence of a bonsai\'s spirit.',
-    image: 'https://images.unsplash.com/photo-1632161286972-03d84c0972e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaWdpdGFsJTIwYm9uc2FpJTIwYXJ0fGVufDB8fHx8MTc1NjY3MzI0OHww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://images.unsplash.com/photo-1683491175728-5921087a95ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkaWdpdGFsJTIwYm9uc2FpJTIwYXJ0fGVufDB8fHx8MTc1NjY3MzI0OHww&ixlib=rb-4.1.0&q=80&w=1080',
     width: 1080,
     height: 1080,
     aiHint: 'digital bonsai art'
