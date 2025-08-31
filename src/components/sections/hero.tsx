@@ -20,7 +20,7 @@ export default function HeroSection() {
           alt="Ceylon Bonsai Museum Logo"
           width={480}
           height={480}
-          className="mb-6"
+          className="mb-6 h-auto w-48 sm:w-64 md:w-80"
         />
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold drop-shadow-lg leading-tight">
           Ceylon Bonsai Museum

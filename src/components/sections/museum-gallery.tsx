@@ -95,7 +95,7 @@ export default function MuseumGallery() {
               Explore our curated collection of bonsai masterpieces, each a living work of art.
             </p>
           </div>
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+          <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
             {bonsaiGallery.map((item) => (
               <div
                 key={item.title}

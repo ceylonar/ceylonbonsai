@@ -47,7 +47,7 @@ export default function ArtworkSection() {
             Explore artistic interpretations of bonsai, where nature meets creative expression.
           </p>
         </div>
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:grid-cols-4 gap-4 space-y-4">
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
           {artworkCollection.map((artwork) => (
             <div key={artwork.title} className="group relative overflow-hidden break-inside-avoid">
               <Image
@@ -58,9 +58,9 @@ export default function ArtworkSection() {
                 className="object-cover w-full h-auto"
                 data-ai-hint={artwork.aiHint}
               />
-              <div className="absolute inset-0 bg-black/70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-headline text-2xl text-white">{artwork.title}</h3>
-                <p className="mt-2 text-white/90">{artwork.description}</p>
+              <div className="absolute inset-0 bg-black/70 flex flex-col justify-end p-4 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-headline text-xl md:text-2xl text-white">{artwork.title}</h3>
+                <p className="mt-2 text-sm md:text-base text-white/90">{artwork.description}</p>
               </div>
             </div>
           ))}
