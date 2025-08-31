@@ -3,6 +3,7 @@ import Footer from '@/components/layout/footer';
 import HeroSection from '@/components/sections/hero';
 import ShowcaseSection from '@/components/sections/showcase';
 import AboutSection from '@/components/sections/about';
+import VisionMissionSection from '@/components/sections/vision-mission';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="flex-grow">
         <HeroSection />
         <ShowcaseSection />
+        <VisionMissionSection />
         <AboutSection />
       </main>
       <Footer />
