@@ -13,16 +13,16 @@ export default function HeroSection() {
         priority
         data-ai-hint="bonsai trees"
       />
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="relative z-10 p-4">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold drop-shadow-lg">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+      <div className="relative z-10 p-4 max-w-4xl mx-auto">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold drop-shadow-lg leading-tight">
           Ceylon Bonsai Museum
         </h1>
-        <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto drop-shadow">
+        <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto drop-shadow-md">
           Discover the Art of Patience and Legacy in Miniature
         </p>
-        <div className="mt-8">
-          <Button size="lg" asChild>
+        <div className="mt-10">
+          <Button size="lg" asChild className="rounded-full">
             <Link href="#showcase">
               Explore the Collection
             </Link>
