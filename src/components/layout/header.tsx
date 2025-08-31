@@ -36,7 +36,7 @@ export default function Header() {
   }, [mounted]);
 
   const Logo = () => (
-     <Link href="/" className="flex items-center gap-2 text-xl font-bold font-headline text-primary whitespace-nowrap">
+     <Link href="/" className="flex items-center gap-2 text-xl font-bold font-headline whitespace-nowrap">
       <Image
         src="https://i.postimg.cc/6388jPpW/ed153779-6d-6d-4cde-9f44-20fda73f8319-removalai-preview.png"
         alt="Ceylon Bonsai Museum Logo"
@@ -44,7 +44,12 @@ export default function Header() {
         height={40}
         className="h-10 w-10"
       />
-      <span className="hidden sm:inline">Ceylon Bonsai Museum</span>
+      <span className={cn(
+        "hidden sm:inline transition-colors duration-300",
+        scrolled ? "text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]" : "text-primary"
+      )}>
+        Ceylon Bonsai Museum
+      </span>
     </Link>
   );
 
