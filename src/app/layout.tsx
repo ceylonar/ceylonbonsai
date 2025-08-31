@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import WhatsAppButton from '@/components/layout/whatsapp-button';
 
 export const metadata: Metadata = {
   title: 'Ceylon Bonsai Museum',
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         {children}
+        <WhatsAppButton />
         <Toaster />
       </body>
     </html>
