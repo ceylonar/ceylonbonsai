@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import type { Product } from './product-data';
 import { initialProducts } from './product-data';
 
@@ -44,9 +44,7 @@ export async function seedProductsData() {
     const snapshot = await getDocs(productsCollectionRef);
     if(snapshot.empty) {
         console.log('Seeding products data...');
-        for (const product of initialProducts) {
-            const docRef = doc(db, 'products', product.id);
-            await setDoc(docRef, product);
-        }
+        const promises = initialProducts.map(product => addDoc(productsCollectionRef, product));
+        await Promise.all(promises);
     }
 }

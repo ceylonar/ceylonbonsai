@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import type { MuseumItem } from './museum-data';
 import { initialBonsaiGallery } from './museum-data';
 
@@ -44,9 +44,7 @@ export async function seedMuseumData() {
   const snapshot = await getDocs(museumCollectionRef);
   if (snapshot.empty) {
     console.log('Seeding museum data...');
-    for (const item of initialBonsaiGallery) {
-      const docRef = doc(db, 'museum', item.id);
-      await setDoc(docRef, item);
-    }
+    const promises = initialBonsaiGallery.map(item => addDoc(museumCollectionRef, item));
+    await Promise.all(promises);
   }
 }
