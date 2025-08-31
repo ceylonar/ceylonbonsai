@@ -14,8 +14,8 @@ export default function Home() {
         <HeroSection />
         <ShowcaseSection />
         <VisionMissionSection />
-        <AboutSection />
         <WhatIsBonsaiSection />
+        <AboutSection />
       </main>
       <Footer />
     </div>
