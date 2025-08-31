@@ -1,22 +1,18 @@
 
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { initialBonsaiGallery, MuseumItem } from '@/lib/museum-data';
-import { initialProducts, Product } from '@/lib/product-data';
 import MuseumAdmin from '@/components/admin/museum-admin';
 import ProductsAdmin from '@/components/admin/products-admin';
 
 export default function AdminPage() {
-  const [museumItems, setMuseumItems] = useState<MuseumItem[]>(initialBonsaiGallery);
-  const [products, setProducts] = useState<Product[]>(initialProducts);
-
   const handleSaveChanges = () => {
-    // In a real application, you would send this data to your backend/API
-    console.log('Saving changes:', { museumItems, products });
+    // In a real application, you would gather data from child components
+    // and send it to your backend/API.
+    // For now, this is a placeholder.
+    console.log('Saving changes action triggered.');
     alert('Changes saved to console! In a real app, this would save to a database.');
   };
   
@@ -24,6 +20,8 @@ export default function AdminPage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl md:text-5xl font-headline text-primary">Admin Dashboard</h1>
+        {/* Note: In a real app, you'd likely lift state up or use a state manager
+            to collect changes before saving. This button is a placeholder. */}
         <Button onClick={handleSaveChanges}>Save All Changes</Button>
       </div>
       <Tabs defaultValue="museum">
@@ -37,7 +35,7 @@ export default function AdminPage() {
               <CardTitle>Manage Museum Collection</CardTitle>
             </CardHeader>
             <CardContent>
-              <MuseumAdmin items={museumItems} setItems={setMuseumItems} />
+              <MuseumAdmin />
             </CardContent>
           </Card>
         </TabsContent>
@@ -47,7 +45,7 @@ export default function AdminPage() {
               <CardTitle>Manage Products</CardTitle>
             </CardHeader>
             <CardContent>
-              <ProductsAdmin products={products} setProducts={setProducts} />
+              <ProductsAdmin />
             </CardContent>
           </Card>
         </TabsContent>

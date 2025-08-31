@@ -2,19 +2,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Product } from '@/lib/product-data';
+import { initialProducts, Product } from '@/lib/product-data';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Trash2, Pencil, PlusCircle } from 'lucide-react';
-
-interface ProductsAdminProps {
-  products: Product[];
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-}
 
 const emptyProduct: Product = {
   id: '',
@@ -28,7 +23,8 @@ const emptyProduct: Product = {
   aiHint: '',
 };
 
-export default function ProductsAdmin({ products, setProducts }: ProductsAdminProps) {
+export default function ProductsAdmin() {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
 

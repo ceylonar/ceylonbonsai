@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MuseumItem } from '@/lib/museum-data';
+import { initialBonsaiGallery, MuseumItem } from '@/lib/museum-data';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -10,11 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Trash2, Pencil, PlusCircle } from 'lucide-react';
-
-interface MuseumAdminProps {
-  items: MuseumItem[];
-  setItems: React.Dispatch<React.SetStateAction<MuseumItem[]>>;
-}
 
 const emptyItem: MuseumItem = {
   id: '',
@@ -26,7 +21,8 @@ const emptyItem: MuseumItem = {
   aiHint: '',
 };
 
-export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
+export default function MuseumAdmin() {
+  const [items, setItems] = useState<MuseumItem[]>(initialBonsaiGallery);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState<MuseumItem | null>(null);
 
