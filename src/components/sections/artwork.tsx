@@ -21,10 +21,10 @@ const artworkCollection = [
   {
     title: 'Sculpted from Light',
     description: 'A photographic artwork playing with light and shadow to highlight the bonsai\'s form.',
-    image: 'https://images.unsplash.com/photo-1707317750672-854bea908860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxib25zYWklMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://picsum.photos/seed/bonsai-tree/1080/1350',
     width: 1080,
     height: 1350,
-    aiHint: 'bonsai photography'
+    aiHint: 'bonsai tree'
   },
   {
     title: 'Ethereal Weave',
