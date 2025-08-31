@@ -3,9 +3,20 @@
 import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+
+const navLinks = [
+  { href: '/museum', label: 'Museum' },
+  { href: '/about', label: 'About' },
+  { href: '/products', label: 'Products' },
+  { href: '/qa-agent', label: 'Q&A Agent' },
+  { href: '/contact', label: 'Contact' },
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,21 +39,21 @@ export default function Header() {
               Ceylon Bonsai Museum
             </Link>
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-              <Link href="/museum" className="text-foreground/80 hover:text-primary transition-colors duration-300">
-                Museum
-              </Link>
-              <Link href="/about" className="text-foreground/80 hover:text-primary transition-colors duration-300">
-                About
-              </Link>
-              <Link href="/products" className="text-foreground/80 hover:text-primary transition-colors duration-300">
-                Products
-              </Link>
-              <Link href="/qa-agent" className="text-foreground/80 hover:text-primary transition-colors duration-300">
-                Q&A Agent
-              </Link>
-              <Link href="/contact" className="text-foreground/80 hover:text-primary transition-colors duration-300">
-                Contact
-              </Link>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative transition-colors duration-300 hover:text-primary',
+                    pathname === link.href ? 'text-primary' : 'text-foreground/80'
+                  )}
+                >
+                  {link.label}
+                  {pathname === link.href && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary transform scale-x-100 transition-transform duration-300 origin-left" />
+                  )}
+                </Link>
+              ))}
             </nav>
           </div>
           <ThemeToggle />
