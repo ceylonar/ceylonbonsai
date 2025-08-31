@@ -5,33 +5,33 @@ const artworkCollection = [
   {
     title: 'Serenity in Ink',
     description: 'A traditional ink wash painting capturing the spirit of a windswept bonsai.',
-    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
-    width: 1024,
-    height: 1024,
+    image: 'https://images.unsplash.com/photo-1676182123614-3e1f67fd38f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxib25zYWklMjBwYWludGluZ3xlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    width: 1080,
+    height: 1080,
     aiHint: 'bonsai painting'
   },
   {
     title: 'Digital Zen',
     description: 'Modern digital art interpreting the bonsai form with vibrant colors and abstract shapes.',
-    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
-    width: 1024,
-    height: 1024,
+    image: 'https://images.unsplash.com/photo-1754373383717-2ceec19e28f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMGJvbnNhaSUyMGFydHxlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    width: 1080,
+    height: 1080,
     aiHint: 'abstract bonsai art'
   },
   {
     title: 'Sculpted from Light',
     description: 'A photographic artwork playing with light and shadow to highlight the bonsai\'s form.',
-    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
-    width: 1024,
-    height: 1024,
+    image: 'https://images.unsplash.com/photo-1707317750672-854bea908860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxib25zYWklMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3NTY2NzMyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    width: 1080,
+    height: 1350,
     aiHint: 'bonsai photography'
   },
   {
     title: 'Ethereal Weave',
     description: 'A delicate digital weaving of light and color, capturing the essence of a bonsai\'s spirit.',
-    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
-    width: 1024,
-    height: 1024,
+    image: 'https://images.unsplash.com/photo-1632161286972-03d84c0972e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaWdpdGFsJTIwYm9uc2FpJTIwYXJ0fGVufDB8fHx8MTc1NjY3MzI0OHww&ixlib=rb-4.1.0&q=80&w=1080',
+    width: 1080,
+    height: 1080,
     aiHint: 'digital bonsai art'
   }
 ];
