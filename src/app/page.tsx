@@ -6,6 +6,7 @@ import AboutSection from '@/components/sections/about';
 import VisionMissionSection from '@/components/sections/vision-mission';
 import WhatIsBonsaiSection from '@/components/sections/what-is-bonsai';
 import ArtworkSection from '@/components/sections/artwork';
+import QAAgentSection from '@/components/sections/qa-agent';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <VisionMissionSection />
         <WhatIsBonsaiSection />
         <ArtworkSection />
+        <QAAgentSection />
         <AboutSection />
       </main>
       <Footer />
