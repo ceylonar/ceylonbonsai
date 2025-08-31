@@ -8,12 +8,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import MuseumAdmin from '@/components/admin/museum-admin';
 import ProductsAdmin from '@/components/admin/products-admin';
 import BlogAdmin from '@/components/admin/blog-admin';
+import ShowcaseAdmin from '@/components/admin/showcase-admin';
 import { MuseumItem } from '@/lib/museum-data';
 import { Product } from '@/lib/product-data';
 import { BlogPost } from '@/lib/blog-data';
+import { ShowcaseItem } from '@/lib/showcase-data';
 import { getMuseumItems } from '@/lib/museum';
 import { getProducts } from '@/lib/products';
 import { getBlogPosts } from '@/lib/blog';
+import { getShowcaseItems } from '@/lib/showcase';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { KeyRound } from 'lucide-react';
@@ -29,6 +32,7 @@ export default function AdminPage() {
   const [museumItems, setMuseumItems] = useState<MuseumItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [showcaseItems, setShowcaseItems] = useState<ShowcaseItem[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const mounted = useMounted();
@@ -38,14 +42,16 @@ export default function AdminPage() {
     async function loadData() {
       try {
         setLoading(true);
-        const [museumData, productsData, blogData] = await Promise.all([
+        const [museumData, productsData, blogData, showcaseData] = await Promise.all([
             getMuseumItems(), 
             getProducts(),
-            getBlogPosts()
+            getBlogPosts(),
+            getShowcaseItems()
         ]);
         setMuseumItems(museumData);
         setProducts(productsData);
         setBlogPosts(blogData);
+        setShowcaseItems(showcaseData);
       } catch (error) {
         console.error("Failed to load data", error);
         toast({
@@ -118,11 +124,22 @@ export default function AdminPage() {
         <h1 className="text-4xl md:text-5xl font-headline text-primary">Admin Dashboard</h1>
       </div>
       <Tabs defaultValue="museum">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="showcase">Showcase</TabsTrigger>
           <TabsTrigger value="museum">Museum Gallery</TabsTrigger>
           <TabsTrigger value="products">Products</TabsTrigger>
           <TabsTrigger value="blog">Blog</TabsTrigger>
         </TabsList>
+        <TabsContent value="showcase">
+          <Card>
+            <CardHeader>
+              <CardTitle>Manage Showcase Items</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ShowcaseAdmin items={showcaseItems} setItems={setShowcaseItems} />
+            </CardContent>
+          </Card>
+        </TabsContent>
         <TabsContent value="museum">
           <Card>
             <CardHeader>
