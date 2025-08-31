@@ -1,23 +1,22 @@
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const bonsaiCollection = [
   {
     title: 'Legacy in Miniature',
     description: 'Explore ancient trees that tell stories of generations, each a living testament to history.',
-    image: 'https://picsum.photos/400/300',
+    image: 'https://picsum.photos/600/400',
     aiHint: 'old bonsai'
   },
   {
     title: 'Techniques and Tributes',
     description: 'Witness the meticulous care and artistry in every branch, a tribute to traditional methods.',
-    image: 'https://picsum.photos/400/301',
+    image: 'https://picsum.photos/600/401',
     aiHint: 'bonsai pruning'
   },
   {
     title: 'Nature\'s Sculpture',
     description: 'Discover the dynamic forms and natural beauty sculpted by artists and time itself.',
-    image: 'https://picsum.photos/400/302',
+    image: 'https://picsum.photos/600/402',
     aiHint: 'sculpted bonsai'
   },
 ];
@@ -26,30 +25,30 @@ export default function ShowcaseSection() {
   return (
     <section id="showcase" className="py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-headline" style={{color: 'hsl(var(--primary))'}}>Our Bonsai Showcase</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             A curated collection celebrating the delicate balance between nature and nurture.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {bonsaiCollection.map((bonsai) => (
-            <Card key={bonsai.title} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-border/50 group">
-              <CardHeader className="p-0 overflow-hidden">
+        <div className="space-y-24">
+          {bonsaiCollection.map((bonsai, index) => (
+            <div key={bonsai.title} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className={`relative w-full h-80 shadow-lg ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <Image
                   src={bonsai.image}
                   alt={bonsai.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  className="object-cover"
                   data-ai-hint={bonsai.aiHint}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              </CardHeader>
-              <CardContent className="p-6">
-                 <CardTitle className="font-headline text-2xl" style={{color: 'hsl(var(--primary))'}}>{bonsai.title}</CardTitle>
-                 <CardDescription className="mt-2 text-base text-muted-foreground">{bonsai.description}</CardDescription>
-              </CardContent>
-            </Card>
+              </div>
+              <div className={`text-center md:text-left ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                 <h3 className="font-headline text-3xl md:text-4xl" style={{color: 'hsl(var(--primary))'}}>{bonsai.title}</h3>
+                 <p className="mt-4 text-lg text-muted-foreground">{bonsai.description}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
