@@ -19,8 +19,15 @@ interface Message {
   content: string;
 }
 
+const initialMessages: Message[] = [
+  {
+    role: 'assistant',
+    content: "Welcome to the Ceylon Bonsai Museum's Q&A. How can I help you today? Feel free to ask me anything about bonsai care, history, or our museum.",
+  },
+];
+
 export default function QAAgentPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,16 +42,6 @@ export default function QAAgentPage() {
       });
     }
   }, [messages]);
-  
-  useEffect(() => {
-    // Start with a welcome message from the assistant
-    setMessages([
-      {
-        role: 'assistant',
-        content: "Welcome to the Ceylon Bonsai Museum's Q&A. How can I help you today? Feel free to ask me anything about bonsai care, history, or our museum.",
-      },
-    ]);
-  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
