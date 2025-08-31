@@ -130,7 +130,7 @@ export default function AdminPage() {
         <h1 className="text-4xl md:text-5xl font-headline text-primary">Admin Dashboard</h1>
       </div>
       <Tabs defaultValue="museum">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
           <TabsTrigger value="showcase">Showcase</TabsTrigger>
           <TabsTrigger value="artwork">Artwork</TabsTrigger>
           <TabsTrigger value="museum">Museum Gallery</TabsTrigger>

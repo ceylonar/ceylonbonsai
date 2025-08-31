@@ -103,20 +103,20 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Image</TableHead>
+              <TableHead className="w-[80px] hidden sm:table-cell">Image</TableHead>
               <TableHead>Title</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead className="hidden md:table-cell">Date</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {posts.map((post) => (
               <TableRow key={post.id}>
-                <TableCell>
+                <TableCell className="hidden sm:table-cell">
                   <Image src={post.image} alt={post.title} width={64} height={64} className="rounded-md object-cover" />
                 </TableCell>
                 <TableCell className="font-medium">{post.title}</TableCell>
-                <TableCell>{format(new Date(post.publishedAt), 'MMM d, yyyy')}</TableCell>
+                <TableCell className="hidden md:table-cell">{format(new Date(post.publishedAt), 'MMM d, yyyy')}</TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="icon" onClick={() => handleEdit(post)}><Pencil className="h-4 w-4" /></Button>
                   <Button variant="ghost" size="icon" onClick={() => handleDelete(post.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
@@ -134,35 +134,35 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
           </DialogHeader>
           {currentPost && (
             <form onSubmit={handleFormSubmit} className="grid gap-4 py-4 max-h-[80vh] overflow-y-auto pr-6">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="title" className="text-right">Title</label>
-                <Input id="title" name="title" value={currentPost.title || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="title" className="md:text-right">Title</label>
+                <Input id="title" name="title" value={currentPost.title || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-start gap-4">
-                <label htmlFor="content" className="text-right mt-2">Content</label>
-                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="col-span-3" rows={20} />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-start gap-4">
+                <label htmlFor="content" className="md:text-right mt-2">Content</label>
+                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="md:col-span-3" rows={20} />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="publishedAt" className="text-right">Date</label>
-                <Input id="publishedAt" name="publishedAt" type="date" value={currentPost.publishedAt ? format(new Date(currentPost.publishedAt), 'yyyy-MM-dd') : ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="publishedAt" className="md:text-right">Date</label>
+                <Input id="publishedAt" name="publishedAt" type="date" value={currentPost.publishedAt ? format(new Date(currentPost.publishedAt), 'yyyy-MM-dd') : ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="image" className="text-right">Image URL</label>
-                <Input id="image" name="image" value={currentPost.image || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="image" className="md:text-right">Image URL</label>
+                <Input id="image" name="image" value={currentPost.image || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="width" className="text-right">Width</label>
-                <Input id="width" name="width" type="number" value={currentPost.width || ''} onChange={handleFormChange} className="col-span-3" />
+               <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="width" className="md:text-right">Width</label>
+                <Input id="width" name="width" type="number" value={currentPost.width || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="height" className="text-right">Height</label>
-                <Input id="height" name="height" type="number" value={currentPost.height || ''} onChange={handleFormChange} className="col-span-3" />
+               <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="height" className="md:text-right">Height</label>
+                <Input id="height" name="height" type="number" value={currentPost.height || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="aiHint" className="text-right">AI Hint</label>
-                <Input id="aiHint" name="aiHint" value={currentPost.aiHint || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="aiHint" className="md:text-right">AI Hint</label>
+                <Input id="aiHint" name="aiHint" value={currentPost.aiHint || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="flex justify-end col-span-4 mt-4">
+              <div className="flex justify-end col-span-1 md:col-span-4 mt-4">
                  <Button type="submit">Save Post</Button>
               </div>
             </form>

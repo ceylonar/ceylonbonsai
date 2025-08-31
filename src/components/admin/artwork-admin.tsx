@@ -97,9 +97,9 @@ export default function ArtworkAdmin({ items, setItems }: ArtworkAdminProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Image</TableHead>
+              <TableHead className="w-[80px]">Image</TableHead>
               <TableHead>Title</TableHead>
-              <TableHead>Description</TableHead>
+              <TableHead className="hidden md:table-cell">Description</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -109,8 +109,8 @@ export default function ArtworkAdmin({ items, setItems }: ArtworkAdminProps) {
                 <TableCell>
                   <Image src={item.image} alt={item.title} width={64} height={64} className="rounded-md object-cover" />
                 </TableCell>
-                <TableCell>{item.title}</TableCell>
-                <TableCell className="max-w-xs truncate">{item.description}</TableCell>
+                <TableCell className="font-medium">{item.title}</TableCell>
+                <TableCell className="hidden md:table-cell max-w-xs truncate">{item.description}</TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="icon" onClick={() => handleEdit(item)}><Pencil className="h-4 w-4" /></Button>
                   <Button variant="ghost" size="icon" onClick={() => handleDelete(item.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
@@ -127,32 +127,32 @@ export default function ArtworkAdmin({ items, setItems }: ArtworkAdminProps) {
             <DialogTitle>{currentItem && currentItem.id ? 'Edit' : 'Add'} Artwork Item</DialogTitle>
           </DialogHeader>
           {currentItem && (
-            <form onSubmit={handleFormSubmit} className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="title" className="text-right">Title</label>
-                <Input id="title" name="title" value={currentItem.title || ''} onChange={handleFormChange} className="col-span-3" />
+            <form onSubmit={handleFormSubmit} className="grid gap-4 py-4 max-h-[80vh] overflow-y-auto pr-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="title" className="md:text-right">Title</label>
+                <Input id="title" name="title" value={currentItem.title || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="description" className="text-right">Description</label>
-                <Textarea id="description" name="description" value={currentItem.description || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-4">
+                <label htmlFor="description" className="md:text-right">Description</label>
+                <Textarea id="description" name="description" value={currentItem.description || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="image" className="text-right">Image URL</label>
-                <Input id="image" name="image" value={currentItem.image || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="image" className="md:text-right">Image URL</label>
+                <Input id="image" name="image" value={currentItem.image || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="width" className="text-right">Width</label>
-                <Input id="width" name="width" type="number" value={currentItem.width || ''} onChange={handleFormChange} className="col-span-3" />
+               <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="width" className="md:text-right">Width</label>
+                <Input id="width" name="width" type="number" value={currentItem.width || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="height" className="text-right">Height</label>
-                <Input id="height" name="height" type="number" value={currentItem.height || ''} onChange={handleFormChange} className="col-span-3" />
+               <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="height" className="md:text-right">Height</label>
+                <Input id="height" name="height" type="number" value={currentItem.height || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="aiHint" className="text-right">AI Hint</label>
-                <Input id="aiHint" name="aiHint" value={currentItem.aiHint || ''} onChange={handleFormChange} className="col-span-3" />
+              <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+                <label htmlFor="aiHint" className="md:text-right">AI Hint</label>
+                <Input id="aiHint" name="aiHint" value={currentItem.aiHint || ''} onChange={handleFormChange} className="md:col-span-3" />
               </div>
-              <div className="flex justify-end col-span-4">
+              <div className="flex justify-end col-span-1 md:col-span-4">
                  <Button type="submit">Save</Button>
               </div>
             </form>
