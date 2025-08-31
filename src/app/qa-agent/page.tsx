@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
@@ -119,7 +120,7 @@ export default function QAAgentPage() {
                             : 'bg-background'
                         )}
                       >
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                        <p className="text-sm leading-relaxed whitespace-normal">{message.content}</p>
                       </div>
                        {message.role === 'user' && <MessageAvatar role="user" />}
                     </motion.div>
@@ -154,7 +155,7 @@ export default function QAAgentPage() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about bonsai care, history, or our museum..."
-                  className="flex-grow text-base"
+                  className="flex-grow"
                   disabled={isLoading}
                 />
                 <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
