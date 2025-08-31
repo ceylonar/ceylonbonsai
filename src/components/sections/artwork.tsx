@@ -26,6 +26,14 @@ const artworkCollection = [
     height: 1024,
     aiHint: 'bonsai photography'
   },
+  {
+    title: 'Ethereal Weave',
+    description: 'A delicate digital weaving of light and color, capturing the essence of a bonsai\'s spirit.',
+    image: 'https://picsum.photos/1024/1024',
+    width: 1024,
+    height: 1024,
+    aiHint: 'digital bonsai art'
+  }
 ];
 
 export default function ArtworkSection() {
@@ -39,7 +47,7 @@ export default function ArtworkSection() {
             Explore artistic interpretations of bonsai, where nature meets creative expression.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {artworkCollection.map((artwork) => (
             <div key={artwork.title} className="group relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
               <Image
