@@ -9,7 +9,7 @@ export default function HeroSection() {
         src="https://picsum.photos/1920/1080"
         alt="A collection of beautiful bonsai trees"
         fill
-        className="object-cover"
+        className="object-cover blur-sm opacity-50"
         priority
         data-ai-hint="bonsai trees"
       />
