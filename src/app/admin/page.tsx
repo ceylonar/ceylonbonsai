@@ -9,14 +9,17 @@ import MuseumAdmin from '@/components/admin/museum-admin';
 import ProductsAdmin from '@/components/admin/products-admin';
 import BlogAdmin from '@/components/admin/blog-admin';
 import ShowcaseAdmin from '@/components/admin/showcase-admin';
+import ArtworkAdmin from '@/components/admin/artwork-admin';
 import { MuseumItem } from '@/lib/museum-data';
 import { Product } from '@/lib/product-data';
 import { BlogPost } from '@/lib/blog-data';
 import { ShowcaseItem } from '@/lib/showcase-data';
+import { ArtworkItem } from '@/lib/artwork-data';
 import { getMuseumItems } from '@/lib/museum';
 import { getProducts } from '@/lib/products';
 import { getBlogPosts } from '@/lib/blog';
 import { getShowcaseItems } from '@/lib/showcase';
+import { getArtworkItems } from '@/lib/artwork';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { KeyRound } from 'lucide-react';
@@ -33,6 +36,7 @@ export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [showcaseItems, setShowcaseItems] = useState<ShowcaseItem[]>([]);
+  const [artworkItems, setArtworkItems] = useState<ArtworkItem[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const mounted = useMounted();
@@ -42,16 +46,18 @@ export default function AdminPage() {
     async function loadData() {
       try {
         setLoading(true);
-        const [museumData, productsData, blogData, showcaseData] = await Promise.all([
+        const [museumData, productsData, blogData, showcaseData, artworkData] = await Promise.all([
             getMuseumItems(), 
             getProducts(),
             getBlogPosts(),
-            getShowcaseItems()
+            getShowcaseItems(),
+            getArtworkItems()
         ]);
         setMuseumItems(museumData);
         setProducts(productsData);
         setBlogPosts(blogData);
         setShowcaseItems(showcaseData);
+        setArtworkItems(artworkData);
       } catch (error) {
         console.error("Failed to load data", error);
         toast({
@@ -124,8 +130,9 @@ export default function AdminPage() {
         <h1 className="text-4xl md:text-5xl font-headline text-primary">Admin Dashboard</h1>
       </div>
       <Tabs defaultValue="museum">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="showcase">Showcase</TabsTrigger>
+          <TabsTrigger value="artwork">Artwork</TabsTrigger>
           <TabsTrigger value="museum">Museum Gallery</TabsTrigger>
           <TabsTrigger value="products">Products</TabsTrigger>
           <TabsTrigger value="blog">Blog</TabsTrigger>
@@ -137,6 +144,16 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <ShowcaseAdmin items={showcaseItems} setItems={setShowcaseItems} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+         <TabsContent value="artwork">
+          <Card>
+            <CardHeader>
+              <CardTitle>Manage Artwork Items</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ArtworkAdmin items={artworkItems} setItems={setArtworkItems} />
             </CardContent>
           </Card>
         </TabsContent>
