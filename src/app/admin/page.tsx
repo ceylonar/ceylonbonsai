@@ -7,15 +7,19 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import MuseumAdmin from '@/components/admin/museum-admin';
 import ProductsAdmin from '@/components/admin/products-admin';
+import BlogAdmin from '@/components/admin/blog-admin';
 import { MuseumItem } from '@/lib/museum-data';
 import { Product } from '@/lib/product-data';
-import { getMuseumItems, updateMuseumItem, addMuseumItem, deleteMuseumItem } from '@/lib/museum';
-import { getProducts, updateProduct, addProduct, deleteProduct } from '@/lib/products';
+import { BlogPost } from '@/lib/blog-data';
+import { getMuseumItems } from '@/lib/museum';
+import { getProducts } from '@/lib/products';
+import { getBlogPosts } from '@/lib/blog';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminPage() {
   const [museumItems, setMuseumItems] = useState<MuseumItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -23,9 +27,14 @@ export default function AdminPage() {
     async function loadData() {
       try {
         setLoading(true);
-        const [museumData, productsData] = await Promise.all([getMuseumItems(), getProducts()]);
+        const [museumData, productsData, blogData] = await Promise.all([
+            getMuseumItems(), 
+            getProducts(),
+            getBlogPosts()
+        ]);
         setMuseumItems(museumData);
         setProducts(productsData);
+        setBlogPosts(blogData);
       } catch (error) {
         console.error("Failed to load data", error);
         toast({
@@ -40,31 +49,8 @@ export default function AdminPage() {
     loadData();
   }, [toast]);
 
-  const handleSaveChanges = async () => {
-    toast({
-      title: 'Saving Changes...',
-      description: 'Your updates are being saved.',
-    });
-    try {
-        // This is now handled by the individual admin components
-        console.log('Save logic is now within each admin component.');
-        toast({
-            title: 'Changes Saved!',
-            description: 'Your updates have been saved and are now live.',
-        });
-    } catch (error) {
-        console.error('Failed to save changes', error);
-        toast({
-            title: 'Error!',
-            description: 'Could not save changes.',
-            variant: 'destructive',
-        });
-    }
-  };
-
-
   if (loading) {
-    return <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">Loading...</div>;
+    return <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">Loading Admin Dashboard...</div>;
   }
 
   return (
@@ -73,9 +59,10 @@ export default function AdminPage() {
         <h1 className="text-4xl md:text-5xl font-headline text-primary">Admin Dashboard</h1>
       </div>
       <Tabs defaultValue="museum">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="museum">Museum Gallery</TabsTrigger>
           <TabsTrigger value="products">Products</TabsTrigger>
+          <TabsTrigger value="blog">Blog</TabsTrigger>
         </TabsList>
         <TabsContent value="museum">
           <Card>
@@ -94,6 +81,16 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <ProductsAdmin products={products} setProducts={setProducts} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="blog">
+          <Card>
+            <CardHeader>
+              <CardTitle>Manage Blog Posts</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <BlogAdmin posts={blogPosts} setPosts={setBlogPosts} />
             </CardContent>
           </Card>
         </TabsContent>

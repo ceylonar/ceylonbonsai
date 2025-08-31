@@ -14,8 +14,9 @@ import Image from 'next/image';
 
 const navLinks = [
   { href: '/museum', label: 'Museum' },
-  { href: '/about', label: 'About' },
   { href: '/products', label: 'Products' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
   { href: '/qa-agent', label: 'Q&A Agent' },
   { href: '/contact', label: 'Contact' },
 ];
