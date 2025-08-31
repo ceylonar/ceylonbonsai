@@ -128,7 +128,7 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
       </div>
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="sm:max-w-3xl">
+        <DialogContent className="sm:max-w-4xl">
           <DialogHeader>
             <DialogTitle>{currentPost && currentPost.id ? 'Edit' : 'Add'} Blog Post</DialogTitle>
           </DialogHeader>
@@ -140,7 +140,7 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
               </div>
               <div className="grid grid-cols-4 items-start gap-4">
                 <label htmlFor="content" className="text-right mt-2">Content</label>
-                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="col-span-3" rows={15} />
+                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="col-span-3" rows={20} />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="publishedAt" className="text-right">Date</label>
