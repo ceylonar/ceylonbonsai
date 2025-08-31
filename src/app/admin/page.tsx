@@ -15,8 +15,16 @@ import { getMuseumItems } from '@/lib/museum';
 import { getProducts } from '@/lib/products';
 import { getBlogPosts } from '@/lib/blog';
 import { useToast } from '@/hooks/use-toast';
+import { Input } from '@/components/ui/input';
+import { KeyRound } from 'lucide-react';
+
+const ADMIN_PASSWORD = "PV00326465";
 
 export default function AdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
   const [museumItems, setMuseumItems] = useState<MuseumItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -24,6 +32,7 @@ export default function AdminPage() {
   const { toast } = useToast();
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     async function loadData() {
       try {
         setLoading(true);
@@ -47,7 +56,51 @@ export default function AdminPage() {
       }
     }
     loadData();
-  }, [toast]);
+  }, [isAuthenticated, toast]);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      setError('');
+    } else {
+      setError('Incorrect password. Please try again.');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-secondary">
+        <Card className="w-full max-w-sm shadow-2xl">
+          <CardHeader>
+            <CardTitle className="text-2xl font-headline text-primary text-center">
+              <KeyRound className="mx-auto h-10 w-10 mb-4 text-primary" />
+              Admin Access
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label htmlFor="password" className="sr-only">Password</label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              {error && <p className="text-sm text-destructive text-center">{error}</p>}
+              <Button type="submit" className="w-full">
+                Unlock
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (loading) {
     return <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">Loading Admin Dashboard...</div>;
