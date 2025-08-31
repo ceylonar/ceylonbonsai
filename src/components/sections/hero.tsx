@@ -30,7 +30,7 @@ export default function HeroSection() {
         </p>
         <div className="mt-10">
           <Button size="lg" asChild className="rounded-full">
-            <Link href="#showcase">
+            <Link href="/museum">
               Explore the Collection
             </Link>
           </Button>
