@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Ceylon Bonsai Museum',
   description: 'Discover the Art of Patience and Legacy in Miniature',
   icons: {
-    icon: '/favicon.ico',
+    icon: 'https://i.postimg.cc/6388jPpW/ed153779-6d-6d-4cde-9f44-20fda73f8319-removalai-preview.png',
   }
 };
 
