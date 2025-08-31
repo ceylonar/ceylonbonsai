@@ -77,8 +77,8 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
     try {
       if (postToSave.id) {
         const { id, ...dataToUpdate } = postToSave;
-        await updateBlogPost(id, dataToUpdate);
-        setPosts(posts.map(p => p.id === id ? { ...p, ...dataToUpdate, id } : p));
+        await updateBlogPost(id, dataToUpdate as BlogPost);
+        setPosts(posts.map(p => p.id === id ? { ...p, ...dataToUpdate, id } as BlogPost : p));
         toast({ title: 'Post Updated', description: 'The blog post has been saved.' });
       } else {
         const newPost = await addBlogPost(postToSave as Omit<BlogPost, 'id'>);
@@ -172,4 +172,3 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
     </div>
   );
 }
-

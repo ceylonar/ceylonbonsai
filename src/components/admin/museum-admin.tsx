@@ -70,8 +70,8 @@ export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
       if (currentItem.id) {
         // Update existing item
         const { id, ...dataToUpdate } = currentItem;
-        await updateMuseumItem(id, dataToUpdate);
-        setItems(items.map(item => item.id === id ? { ...item, ...dataToUpdate } : item));
+        await updateMuseumItem(id, dataToUpdate as Omit<MuseumItem, 'id'>);
+        setItems(items.map(item => item.id === id ? { ...item, ...dataToUpdate, id } as MuseumItem : item));
         toast({ title: 'Item Updated', description: 'The museum item has been saved.' });
       } else {
         // Add new item

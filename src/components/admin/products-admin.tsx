@@ -71,8 +71,8 @@ export default function ProductsAdmin({ products, setProducts }: ProductsAdminPr
     try {
       if (currentProduct.id) {
         const { id, ...dataToUpdate } = currentProduct;
-        await updateProduct(id, dataToUpdate);
-        setProducts(products.map(p => p.id === id ? { ...p, ...dataToUpdate } : p));
+        await updateProduct(id, dataToUpdate as Omit<Product, 'id'>);
+        setProducts(products.map(p => p.id === id ? { ...p, ...dataToUpdate, id } as Product : p));
         toast({ title: 'Product Updated', description: 'The product has been saved.' });
       } else {
         const newProduct = await addProduct(currentProduct as Omit<Product, 'id'>);
