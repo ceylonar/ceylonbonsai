@@ -91,12 +91,12 @@ export default function ProductsSection() {
     <div className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-headline text-primary">Our Collection</h1>
+          <h1 className="text-4xl md:text-5xl font-headline text-primary">Selling products</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Everything you need to cultivate your passion for the art of bonsai.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-8">
           {products.map((product) => (
             <Card key={product.name} className="group overflow-hidden flex flex-col">
               <CardContent className="p-0">
