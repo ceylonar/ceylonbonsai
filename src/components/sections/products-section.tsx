@@ -1,12 +1,41 @@
 
+'use client';
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { ShoppingCart } from 'lucide-react';
-import { products } from '@/lib/product-data';
-
+import { getProducts } from '@/lib/products';
+import { useEffect, useState } from 'react';
+import type { Product } from '@/lib/product-data';
 
 export default function ProductsSection() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const productList = await getProducts();
+        setProducts(productList);
+      } catch (error) {
+        console.error("Failed to fetch products", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+        <div className="py-20 lg:py-24 text-center">
+            <p>Loading products...</p>
+        </div>
+    )
+  }
+
   return (
     <div className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +47,7 @@ export default function ProductsSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
-            <Card key={product.name} className="group overflow-hidden flex flex-col">
+            <Card key={product.id} className="group overflow-hidden flex flex-col">
               <CardContent className="p-0">
                 <div className="relative aspect-square w-full">
                   <Image

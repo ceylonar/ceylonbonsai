@@ -1,23 +1,48 @@
 
-// @ts-nocheck
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { bonsaiGallery } from '@/lib/museum-data';
+import { getMuseumItems } from '@/lib/museum';
+import type { MuseumItem } from '@/lib/museum-data';
 
 
 export default function MuseumGallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<MuseumItem | null>(null);
+  const [gallery, setGallery] = useState<MuseumItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const openLightbox = (image) => {
+   useEffect(() => {
+    const fetchMuseumItems = async () => {
+      try {
+        setLoading(true);
+        const items = await getMuseumItems();
+        setGallery(items);
+      } catch (error) {
+        console.error("Failed to fetch museum items", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMuseumItems();
+  }, []);
+
+  const openLightbox = (image: MuseumItem) => {
     setSelectedImage(image);
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
   };
+
+  if (loading) {
+    return (
+        <div className="py-20 lg:py-24 text-center">
+            <p>Loading museum collection...</p>
+        </div>
+    )
+  }
 
   return (
     <>
@@ -30,9 +55,9 @@ export default function MuseumGallery() {
             </p>
           </div>
           <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-            {bonsaiGallery.map((item) => (
+            {gallery.map((item) => (
               <div
-                key={item.title}
+                key={item.id}
                 className="group relative overflow-hidden break-inside-avoid cursor-pointer"
                 onClick={() => openLightbox(item)}
               >

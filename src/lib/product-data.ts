@@ -11,9 +11,8 @@ export interface Product {
   aiHint: string;
 }
 
-export const initialProducts: Product[] = [
+export const initialProducts: Omit<Product, 'id'>[] = [
   {
-    id: '1',
     name: 'Juniper Bonsai Tree',
     category: 'Trees',
     price: '$79.99',
@@ -24,7 +23,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai juniper product'
   },
   {
-    id: '2',
     name: 'Professional Pruning Shears',
     category: 'Tools',
     price: '$45.00',
@@ -35,7 +33,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai shears'
   },
   {
-    id: '3',
     name: 'Ceramic Bonsai Pot',
     category: 'Pots',
     price: '$35.50',
@@ -46,7 +43,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai pot'
   },
   {
-    id: '4',
     name: 'Bonsai Soil Mix',
     category: 'Supplies',
     price: '$19.99',
@@ -57,7 +53,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai soil'
   },
   {
-    id: '5',
     name: 'Japanese Maple Bonsai',
     category: 'Trees',
     price: '$129.99',
@@ -68,7 +63,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai maple product'
   },
   {
-    id: '6',
     name: 'Concave Cutter',
     category: 'Tools',
     price: '$65.00',
@@ -79,7 +73,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai cutter'
   },
   {
-    id: '7',
     name: 'Aluminum Training Wire',
     category: 'Supplies',
     price: '$15.00',
@@ -90,7 +83,6 @@ export const initialProducts: Product[] = [
     aiHint: 'bonsai wire'
   },
   {
-    id: '8',
     name: 'Glazed Cascade Pot',
     category: 'Pots',
     price: '$55.00',
@@ -101,6 +93,3 @@ export const initialProducts: Product[] = [
     aiHint: 'cascade bonsai pot'
   },
 ];
-
-// This is a mock function, in a real app you would fetch this from a persistent data store.
-export const products = initialProducts;

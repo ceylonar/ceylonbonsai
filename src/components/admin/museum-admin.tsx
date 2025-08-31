@@ -10,9 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Trash2, Pencil, PlusCircle } from 'lucide-react';
+import { addMuseumItem, updateMuseumItem, deleteMuseumItem } from '@/lib/museum';
+import { useToast } from '@/hooks/use-toast';
 
-const emptyItem: MuseumItem = {
-  id: '',
+const emptyItem: Omit<MuseumItem, 'id'> = {
   title: '',
   description: '',
   image: 'https://picsum.photos/800/1200',
@@ -28,7 +29,8 @@ interface MuseumAdminProps {
 
 export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [currentItem, setCurrentItem] = useState<MuseumItem | null>(null);
+  const [currentItem, setCurrentItem] = useState<Partial<MuseumItem> | null>(null);
+  const { toast } = useToast();
 
   const handleEdit = (item: MuseumItem) => {
     setCurrentItem(item);
@@ -36,13 +38,20 @@ export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
   };
 
   const handleAddNew = () => {
-    setCurrentItem({ ...emptyItem, id: `new-${Date.now()}` });
+    setCurrentItem({ ...emptyItem });
     setIsFormOpen(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
-      setItems(items.filter((item) => item.id !== id));
+      try {
+        await deleteMuseumItem(id);
+        setItems(items.filter((item) => item.id !== id));
+        toast({ title: 'Item Deleted', description: 'The museum item has been removed.' });
+      } catch (error) {
+        console.error("Failed to delete item", error);
+        toast({ title: 'Error', description: 'Could not delete item.', variant: 'destructive' });
+      }
     }
   };
 
@@ -53,20 +62,29 @@ export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentItem) return;
 
-    const existingIndex = items.findIndex((item) => item.id === currentItem.id);
-    if (existingIndex > -1) {
-      const updatedItems = [...items];
-      updatedItems[existingIndex] = currentItem;
-      setItems(updatedItems);
-    } else {
-      setItems([...items, currentItem]);
+    try {
+      if (currentItem.id) {
+        // Update existing item
+        const { id, ...dataToUpdate } = currentItem;
+        await updateMuseumItem(id, dataToUpdate);
+        setItems(items.map(item => item.id === id ? { ...item, ...dataToUpdate } : item));
+        toast({ title: 'Item Updated', description: 'The museum item has been saved.' });
+      } else {
+        // Add new item
+        const newItem = await addMuseumItem(currentItem as Omit<MuseumItem, 'id'>);
+        setItems([...items, newItem]);
+        toast({ title: 'Item Added', description: 'The new museum item is now in the gallery.' });
+      }
+      setIsFormOpen(false);
+      setCurrentItem(null);
+    } catch (error) {
+       console.error("Failed to save item", error);
+       toast({ title: 'Error', description: 'Could not save item.', variant: 'destructive' });
     }
-    setIsFormOpen(false);
-    setCurrentItem(null);
   };
 
   return (
@@ -106,33 +124,33 @@ export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{currentItem && items.find(i => i.id === currentItem.id) ? 'Edit' : 'Add'} Museum Item</DialogTitle>
+            <DialogTitle>{currentItem && currentItem.id ? 'Edit' : 'Add'} Museum Item</DialogTitle>
           </DialogHeader>
           {currentItem && (
             <form onSubmit={handleFormSubmit} className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="title" className="text-right">Title</label>
-                <Input id="title" name="title" value={currentItem.title} onChange={handleFormChange} className="col-span-3" />
+                <Input id="title" name="title" value={currentItem.title || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="description" className="text-right">Description</label>
-                <Textarea id="description" name="description" value={currentItem.description} onChange={handleFormChange} className="col-span-3" />
+                <Textarea id="description" name="description" value={currentItem.description || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="image" className="text-right">Image URL</label>
-                <Input id="image" name="image" value={currentItem.image} onChange={handleFormChange} className="col-span-3" />
+                <Input id="image" name="image" value={currentItem.image || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
                <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="width" className="text-right">Width</label>
-                <Input id="width" name="width" type="number" value={currentItem.width} onChange={handleFormChange} className="col-span-3" />
+                <Input id="width" name="width" type="number" value={currentItem.width || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
                <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="height" className="text-right">Height</label>
-                <Input id="height" name="height" type="number" value={currentItem.height} onChange={handleFormChange} className="col-span-3" />
+                <Input id="height" name="height" type="number" value={currentItem.height || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="aiHint" className="text-right">AI Hint</label>
-                <Input id="aiHint" name="aiHint" value={currentItem.aiHint} onChange={handleFormChange} className="col-span-3" />
+                <Input id="aiHint" name="aiHint" value={currentItem.aiHint || ''} onChange={handleFormChange} className="col-span-3" />
               </div>
               <div className="flex justify-end col-span-4">
                  <Button type="submit">Save</Button>
