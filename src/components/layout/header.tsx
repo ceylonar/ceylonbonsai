@@ -23,27 +23,29 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          <Link href="/" className="text-2xl font-bold font-headline text-primary whitespace-nowrap">
-            Ceylon Bonsai Museum
-          </Link>
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <Link href="/museum" className="text-foreground hover:text-primary transition-colors duration-300">
-              Museum
+          <div className="flex items-center gap-8">
+            <Link href="/" className="text-2xl font-bold font-headline text-primary whitespace-nowrap">
+              Ceylon Bonsai Museum
             </Link>
-            <Link href="/about" className="text-foreground hover:text-primary transition-colors duration-300">
-              About
-            </Link>
-            <Link href="/products" className="text-foreground hover:text-primary transition-colors duration-300">
-              Products
-            </Link>
-            <Link href="/qa-agent" className="text-foreground hover:text-primary transition-colors duration-300">
-              Q&A Agent
-            </Link>
-            <Link href="/contact" className="text-foreground hover:text-primary transition-colors duration-300">
-              Contact
-            </Link>
-            <ThemeToggle />
-          </nav>
+            <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+              <Link href="/museum" className="text-foreground hover:text-primary transition-colors duration-300">
+                Museum
+              </Link>
+              <Link href="/about" className="text-foreground hover:text-primary transition-colors duration-300">
+                About
+              </Link>
+              <Link href="/products" className="text-foreground hover:text-primary transition-colors duration-300">
+                Products
+              </Link>
+              <Link href="/qa-agent" className="text-foreground hover:text-primary transition-colors duration-300">
+                Q&A Agent
+              </Link>
+              <Link href="/contact" className="text-foreground hover:text-primary transition-colors duration-300">
+                Contact
+              </Link>
+            </nav>
+          </div>
+          <ThemeToggle />
         </div>
       </div>
     </header>
