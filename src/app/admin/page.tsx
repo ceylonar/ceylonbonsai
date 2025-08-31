@@ -17,6 +17,7 @@ import { getBlogPosts } from '@/lib/blog';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { KeyRound } from 'lucide-react';
+import { useMounted } from '@/hooks/use-mounted';
 
 const ADMIN_PASSWORD = "PV00326465";
 
@@ -30,6 +31,7 @@ export default function AdminPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const mounted = useMounted();
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -67,6 +69,10 @@ export default function AdminPage() {
       setError('Incorrect password. Please try again.');
     }
   };
+  
+  if (!mounted) {
+    return null;
+  }
 
   if (!isAuthenticated) {
     return (
