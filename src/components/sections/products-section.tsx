@@ -4,10 +4,10 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { ShoppingCart } from 'lucide-react';
 import { getProducts } from '@/lib/products';
 import { useEffect, useState } from 'react';
 import type { Product } from '@/lib/product-data';
+import Link from 'next/link';
 
 export default function ProductsSection() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,6 +28,12 @@ export default function ProductsSection() {
     fetchProducts();
   }, []);
 
+  const handleOrderNow = (product: Product) => {
+    const message = `Hello, I'm interested in ordering the following product:\n\nName: ${product.name}\nPrice: ${product.price}\n\nPlease let me know how to proceed.`;
+    const whatsappUrl = `https://wa.me/94765687449?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
   if (loading) {
     return (
         <div className="py-20 lg:py-24 text-center">
@@ -46,34 +52,41 @@ export default function ProductsSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <Card key={product.id} className="group overflow-hidden flex flex-col">
-              <CardContent className="p-0">
-                <div className="relative aspect-square w-full">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={product.width}
-                    height={product.height}
-                    className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-                    data-ai-hint={product.aiHint}
-                  />
+          {products.map((product) => {
+            const message = `Hello, I'm interested in ordering the following product:\n\n*Product Name:* ${product.name}\n*Price:* ${product.price}`;
+            const whatsappUrl = `https://wa.me/94765687449?text=${encodeURIComponent(message)}`;
+
+            return (
+              <Card key={product.id} className="group overflow-hidden flex flex-col">
+                <CardContent className="p-0">
+                  <div className="relative aspect-square w-full">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={product.width}
+                      height={product.height}
+                      className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+                      data-ai-hint={product.aiHint}
+                    />
+                  </div>
+                </CardContent>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-headline text-primary">{product.name}</h3>
+                  <p className="mt-2 text-muted-foreground flex-grow">{product.description}</p>
+                  <div className="mt-4 flex justify-between items-center">
+                    <p className="text-2xl font-semibold text-foreground">{product.price}</p>
+                  </div>
                 </div>
-              </CardContent>
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-headline text-primary">{product.name}</h3>
-                <p className="mt-2 text-muted-foreground flex-grow">{product.description}</p>
-                <div className="mt-4 flex justify-between items-center">
-                  <p className="text-2xl font-semibold text-foreground">{product.price}</p>
-                </div>
-              </div>
-              <CardFooter className="p-6 pt-0">
-                <Button className="w-full">
-                  <ShoppingCart className="mr-2" /> Add to Cart
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+                <CardFooter className="p-6 pt-0">
+                  <Button asChild className="w-full">
+                    <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      Order Now
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            )
+          })}
         </div>
       </div>
     </div>
