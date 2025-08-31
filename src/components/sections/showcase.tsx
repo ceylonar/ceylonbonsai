@@ -12,7 +12,7 @@ const bonsaiCollection = [
   {
     title: 'Techniques and Tributes',
     description: 'Witness the meticulous care and artistry in every branch, a tribute to traditional methods.',
-    image: 'https://picsum.photos/800/600',
+    image: 'https://images.unsplash.com/photo-1690775937793-79a0f80fbbd5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8c3JpJTIwbGFua2FuJTIwYm9uc2FpfGVufDB8fHx8MTc1NjY3MzYzMHww&ixlib=rb-4.1.0&q=80&w=1080',
     width: 800,
     height: 600,
     aiHint: 'bonsai pruning'
