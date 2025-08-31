@@ -23,7 +23,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          <Link href="/" className="text-2xl font-bold font-headline text-primary">
+          <Link href="/" className="text-2xl font-bold font-headline text-primary whitespace-nowrap">
             Ceylon Bonsai Museum
           </Link>
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
