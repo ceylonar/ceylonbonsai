@@ -140,7 +140,7 @@ export default function BlogAdmin({ posts, setPosts }: BlogAdminProps) {
               </div>
               <div className="grid grid-cols-4 items-start gap-4">
                 <label htmlFor="content" className="text-right mt-2">Content</label>
-                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="col-span-3" rows={10} />
+                <Textarea id="content" name="content" value={currentPost.content || ''} onChange={handleFormChange} className="col-span-3" rows={15} />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <label htmlFor="publishedAt" className="text-right">Date</label>
