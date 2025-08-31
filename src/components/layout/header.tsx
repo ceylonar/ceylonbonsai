@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ThemeToggle } from './theme-toggle';
 
 export default function Header() {
   return (
@@ -24,6 +25,7 @@ export default function Header() {
             <Link href="/contact" className="text-foreground hover:text-primary transition-colors duration-300">
               Contact
             </Link>
+            <ThemeToggle />
           </nav>
         </div>
       </div>
