@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen w-full flex items-center justify-center text-center text-white">
       <Image
-        src="https://picsum.photos/1920/1080"
+        src="https://i.postimg.cc/ydw0FRz8/Generated-Image-September-01-2025-2-46-AM.jpg"
         alt="A collection of beautiful bonsai trees"
         fill
         className="object-cover blur-sm opacity-70"
