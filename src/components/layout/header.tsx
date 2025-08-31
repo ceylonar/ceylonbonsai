@@ -5,6 +5,9 @@ import { ThemeToggle } from './theme-toggle';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { href: '/museum', label: 'Museum' },
@@ -28,16 +31,17 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ${
+      className={cn(
+        'sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300',
         scrolled ? 'bg-background/80' : 'bg-transparent'
-      }`}
+      )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-bold font-headline text-primary whitespace-nowrap">
-              Ceylon Bonsai Museum
-            </Link>
+          <Link href="/" className="text-xl font-bold font-headline text-primary whitespace-nowrap">
+            Ceylon Bonsai Museum
+          </Link>
+          <div className="flex items-center gap-4">
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
               {navLinks.map((link) => (
                 <Link
@@ -55,8 +59,37 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
+            <ThemeToggle />
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open Menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <div className="flex flex-col space-y-4 p-6">
+                    <Link href="/" className="text-xl font-bold font-headline text-primary mb-4">
+                      Ceylon Bonsai Museum
+                    </Link>
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={cn(
+                          'text-lg transition-colors duration-300 hover:text-primary',
+                          pathname === link.href ? 'text-primary font-semibold' : 'text-foreground/80'
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
-          <ThemeToggle />
         </div>
       </div>
     </header>
