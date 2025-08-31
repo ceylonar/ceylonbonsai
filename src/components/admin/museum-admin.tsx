@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { initialBonsaiGallery, MuseumItem } from '@/lib/museum-data';
+import type { MuseumItem } from '@/lib/museum-data';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -21,8 +21,12 @@ const emptyItem: MuseumItem = {
   aiHint: '',
 };
 
-export default function MuseumAdmin() {
-  const [items, setItems] = useState<MuseumItem[]>(initialBonsaiGallery);
+interface MuseumAdminProps {
+  items: MuseumItem[];
+  setItems: React.Dispatch<React.SetStateAction<MuseumItem[]>>;
+}
+
+export default function MuseumAdmin({ items, setItems }: MuseumAdminProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState<MuseumItem | null>(null);
 

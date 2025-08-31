@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { initialProducts, Product } from '@/lib/product-data';
+import type { Product } from '@/lib/product-data';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -23,8 +23,12 @@ const emptyProduct: Product = {
   aiHint: '',
 };
 
-export default function ProductsAdmin() {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+interface ProductsAdminProps {
+  products: Product[];
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+}
+
+export default function ProductsAdmin({ products, setProducts }: ProductsAdminProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
 
