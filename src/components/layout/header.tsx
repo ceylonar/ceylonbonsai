@@ -37,7 +37,7 @@ export default function Header() {
   const Logo = () => (
      <Link href="/" className="flex items-center gap-2 text-xl font-bold font-headline text-primary whitespace-nowrap">
       <Image
-        src="https://i.postimg.cc/6388jPpW/ed153779-6d6d-4cde-9f44-20fda73f8319-removalai-preview.png"
+        src="https://i.postimg.cc/6388jPpW/ed153779-6d-6d-4cde-9f44-20fda73f8319-removalai-preview.png"
         alt="Ceylon Bonsai Museum Logo"
         width={40}
         height={40}
@@ -75,7 +75,7 @@ export default function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300',
-        scrolled ? 'bg-background/80' : 'bg-transparent'
+        scrolled ? 'bg-background/30' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
