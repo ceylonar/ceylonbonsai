@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/" className="text-2xl font-bold font-headline text-primary whitespace-nowrap">
               Ceylon Bonsai Museum
             </Link>
-            <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
               <Link href="/museum" className="text-foreground hover:text-primary transition-colors duration-300">
                 Museum
               </Link>
