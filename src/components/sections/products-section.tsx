@@ -30,7 +30,7 @@ export default function ProductsSection() {
 
   const handleOrderNow = (product: Product) => {
     const message = `Hello, I'm interested in ordering the following product:\n\nName: ${product.name}\nPrice: ${product.price}\n\nPlease let me know how to proceed.`;
-    const whatsappUrl = `https://wa.me/94765687449?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/94719005632?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -54,7 +54,7 @@ export default function ProductsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => {
             const message = `Hello, I'm interested in ordering the following product:\n\n*Product Name:* ${product.name}\n*Price:* ${product.price}`;
-            const whatsappUrl = `https://wa.me/94765687449?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/94719005632?text=${encodeURIComponent(message)}`;
 
             return (
               <Card key={product.id} className="group overflow-hidden flex flex-col">
