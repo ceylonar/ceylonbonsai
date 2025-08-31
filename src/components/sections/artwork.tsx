@@ -5,25 +5,25 @@ const artworkCollection = [
   {
     title: 'Serenity in Ink',
     description: 'A traditional ink wash painting capturing the spirit of a windswept bonsai.',
-    image: 'https://picsum.photos/600/800',
-    width: 600,
-    height: 800,
+    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
+    width: 1024,
+    height: 1024,
     aiHint: 'bonsai painting'
   },
   {
     title: 'Digital Zen',
     description: 'Modern digital art interpreting the bonsai form with vibrant colors and abstract shapes.',
-    image: 'https://picsum.photos/600/800',
-    width: 600,
-    height: 800,
+    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
+    width: 1024,
+    height: 1024,
     aiHint: 'abstract bonsai art'
   },
   {
     title: 'Sculpted from Light',
     description: 'A photographic artwork playing with light and shadow to highlight the bonsai\'s form.',
-    image: 'https://picsum.photos/600/800',
-    width: 600,
-    height: 800,
+    image: 'https://cdn.shopify.com/s/files/1/0356/0076/0877/files/AdobeStock_179294033_1024x1024.jpg?v=1717144004',
+    width: 1024,
+    height: 1024,
     aiHint: 'bonsai photography'
   },
 ];
